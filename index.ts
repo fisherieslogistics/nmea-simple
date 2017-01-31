@@ -59,6 +59,9 @@ const encoders: { [sentenceId: string]: Encoder } = {
     VTG: encodeVTG
 };
 
+export function addChecksum(nmeaString: string) {
+    return createNmeaChecksumFooter(nmeaString);
+}
 
 export function parseNmeaSentence(sentence: string): Packet {
     if (!validNmeaChecksum(sentence)) {
