@@ -15,7 +15,7 @@ import { decodeSentence as decodeRMC, RMCPacket } from "./codecs/RMC";
 import { decodeSentence as decodeVHW, VHWPacket } from "./codecs/VHW";
 import { decodeSentence as decodeVTG, VTGPacket, encodePacket as encodeVTG } from "./codecs/VTG";
 
-import { validNmeaChecksum } from "./helpers";
+import { validNmeaChecksum, createNmeaChecksumFooter } from "./helpers";
 
 
 export type Packet = APBPacket | BWCPacket | DBTPacket | GGAPacket | GLLPacket | GSAPacket | GSVPacket | HDGPacket | HDMPacket | HDTPacket | MTKPacket | MWVPacket | RDIDPacket | RMCPacket | VHWPacket | VTGPacket;
@@ -92,6 +92,7 @@ export function parseNmeaSentence(sentence: string): Packet {
     return packet;
 };
 
+export function createNmeaChecksumFooter;
 
 export function encodeNmeaPacket(packet: Packet, talker: string = "P"): string {
     if (packet === undefined) {
